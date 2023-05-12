@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IodineAssay DataExtractor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    body {
+      margin: 0;
+      font-family: Cambria; Arial;
+    }
+
+    .main {
+      margin: 75px 20px 100px 20px;
+    }
+
+    .footer {
+      background-color: #1F456E;
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+    }
+
+    .footer a, .footer p {
+      font-size: 11px;
+      color: white;
+      text-align: center;
+      padding: 4px 10px;
+      display: inline-block;
+      float: right;
+    }
+
+    .navbar {
+      background-color: #1F456E;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+    }
+
+    .navbar a, .dropdown .chapter {
+      font-size: 15px;
+      color: white;
+      text-align: center;
+      padding: 6px 10px;
+      display: inline-block;
+    }
+
+    .navbar a {
+      background-color: #151E3D;
+      font-weight: bold;
+      float: left;
+      text-decoration: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .navbar a:hover, .dropdown:hover .chapter {
+      background-color: #9B1003;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 80px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      font-weight: normal;
+      display: block;
+      text-align: left;
+      background-color: #1F456E;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #151E3D;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    h1, h2, .title {
+      color:black;
+      font-weight:bold;
+      font-size: 100%;
+      padding: 2px;
+      margin: -40px 0 0 0;
+    }
+
+    h1::before, h2::before {
+    padding-top:75px;
+    display:block;
+    content:"";
+    }
+
+    .title {
+      font-size:250%;
+      border: none;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+    }
+
+    h1 {
+      font-size:120%;
+      border-bottom:1.5px solid black;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size:  110%;
+    }
+
+    p, li {
+      color:black;
+      font-size:80%;
+      margin: 0 0 5px 2px;
+      padding: 2px
+    }
+
+    ul {
+      margin: 0;
+      padding: 0 0 2px 25px;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    li li {
+      font-size: 100%;
+      padding: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#TOC0">Top</a>
+    <div class="dropdown">
+      <div class="chapter">Introduction</div>
+      <div class="dropdown-content">
+        <a href="#TOC1">1. INTRODUCTION</a>
+        <a href="#TOC1_1">1.1. IodineAssay_DataExtractor</a>
+        <a href="#TOC1_2">1.2. IodineAssay_DataExtractor_automated</a>
+        <a href="#TOC1_3">1.3. IodineAssay_MaxPointFinder</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="chapter">Setup</div>
+      <div class="dropdown-content">
+        <a href="#TOC2">2. SETUP</a>
+        <a href="#TOC2_1">2.1. Install Python 3</a>
+        <a href="#TOC2_2">2.2. Download repository</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="chapter">Run</div>
+      <div class="dropdown-content">
+        <a href="#TOC3">3. RUN PROGRAM</a>
+        <a href="#TOC3_1">3.1. Start from file</a>
+        <a href="#TOC3_2">3.2. Start from command prompt</a>
+        <a href="#TOC3_3">3.3. Run Extractor</a>
+        <a href="#TOC3_4">3.4. Run automated and MaxPointFinder</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="chapter">Default values</div>
+      <div class="dropdown-content">
+        <a href="#TOC4">4. CHANGE DEFAULT VALUES</a>
+        <a href="#TOC4_1">4.1. Variables</a>
+        <a href="#TOC4_2">4.2. Column indices</a>
+        <a href="#TOC4_3">4.3. Labels</a>
+        <a href="#TOC4_4">4.4. Settings</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="chapter">Info</div>
+      <div class="dropdown-content">
+        <a href="#TOC5">5. ADDITIONAL INFORMATION</a>
+        <a href="#TOC5_1">5.1. Add Python to PATH</a>
+        <a href="#TOC5_2">5.2. Intro to command prompt</a>
+        <a href="#TOC5_3">5.3. Setup command prompt</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="chapter">Troubleshoot</div>
+      <div class="dropdown-content">
+        <a href="#TOC6">6. TROUBLESHOOTING</a>
+        <a href="#TOC6_1">6.1. Wrong data</a>
+        <a href="#TOC6_2">6.2. Error messages</a>
+        <a href="#TOC6_3">6.3. Crashing</a>
+        <a href="#TOC6_4">6.4. Cannot read file</a>
+        <a href="#TOC6_5">6.5. File is not read correctly</a>
+        <a href="#TOC6_6">6.6. Output is not as required</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://doi.org/10.1016/j.ab.2020.113696" target="_blank">Iodine Assay</a>
+    <p>Programs and manual created by A.L.O. Gaenssle, 2017</p>
+  </div>
+  <div class="main">
+    <h1 id="TOC0" class="title">Iodine Assay Data Extractor</h1>
+    <p class="subtitle">Created for the <a href="https://doi.org/10.1016/j.ab.2020.113696" target="_blank">Iodine Assay</a> by A.L.O. Gaenssle, 2017</p>
+  <h1 id="TOC1" >1. Introduction</h1>
+  <p>The Iodine Assay File Converter (By A.L.O.Gaenssle, University of Groningen, 2017) is a small but highly-flexible program to sped up the analysis of data obtained from the iodine assay <a href="https://doi.org/10.1016/j.ab.2020.113696" target="_blank">(Gaenssle et al, 2020)</a> conducted in 96-well plates by re-organizing the data from the spectrophotometer to a suitable table format.</p>
+  <h2 id="TOC1_1">1.1. IodineAssay_DataExtractor.py</h2>
+  <ul>
+    <li>The program has been written to import files (single wavelengths and spectra as plain text (.txt) files) exported from spectrophotometers (the default type is set for Molecular Devices but it can be modified) and export plain text files suitable for programs such as Stata or Origin</li>
+    <li>It reads in and reorganizes the data depending on user input, being amongst others sample number, assay area, number and time of transferred aliquots</li>
+    <li>The data is then saved in columns of sample index, time(min), Wavelength (nm) (if applicable) and results for each multiplicate</li>
+  </ul>
+  <h2 id="TOC1_2">1.2. IodineAssay_DataExtractor_automated.py</h2>
+  <p>The automated DataExtractor has the same function as the default version but it does not conduct a questionaire before starting.</p>
+  <h2 id="TOC1_3">1.3. IodineAssay_MaxPointFinder.py</h2>
+  <p>The MaxPointFinder takes a spectra file obtained from the DataExtractor and finds the maximum wavelength for each sample.</p>
+  <h1 id="TOC2">2. Setup</h1>
+  <p>The program was written and installed on Windows 7, however, since it runs in Python 3, the program should run on all other operating systems. Otherwise, contact <a href="mailto:A.L.O.Gaenssle@rug.nl">A.L.O.Gaenssle@rug.nl</a>.</p>
+  <h2 id="TOC2_1">2.1. Install Python 3</h2>
+  <ul>
+    <li>Download Python 3 from this link: <a href="https://www.python.org/downloads/" target="_blank">Python</a></li>
+    <li>Start the Python Setup and select Add Python 3.X to PATH (X is the number of the current version, to enable simply writing python from any folder (minimizes text you have to write), if you forgot it, see Section <a href="#TOC5_1">5.1</a>)</li>
+    <li>You can then install Python either with standard and customized conditions</li>
+  </ul>
+  <h2 id="TOC2_2">2.2. Download Repository</h2>
+  <ul>
+    <li>Download the repository from GitHub, link: <a href="https://github.com/gaenssle/IodineAssay_DataExtractor" target="_blank">Repository</a></li>
+    <li>Save the scripts in a suitable folder
+      <ul>
+        <li>The scripts work independently, so you can save them anywhere you want</li>
+        <li>Its best to save them close to your raw data (parent or same folder) as it minimized the length of the path (amount of text) you have to type in</li>
+      </ul>
+    </li>
+  </ul>
+  <h1 id="TOC3">3. Run programs</h1>
+  <h2 id="TOC3_1">3.1. Start extractor from file</h2>
+  <ul>
+    <li>Right-click on the file IodineAssay_DataExtractor.py and choose Open with &gt; Python</li>
+    <li>If you run into problems, try as instructed in Section <a href="#TOC3_2">3.2</a></li>
+  </ul>
+  <h2 id="TOC3_2">3.2. Start extractor from command prompt</h2>
+  <ul>
+    <li>You can find the 'Command Prompt' under under Start Menu &gt; All Programs &gt; Accessories</li>
+    <li>Open the Command Prompt (double-click), below the short header you can see the folder you are currently in. If it is not the one containing the IodineAssay_DataExtractor.py see Sections <a href="#TOC5_2">5.2</a>and <a href="#TOC5_3">5.3</a></li>
+    <li>Type in python IodineAssay_DataExtractor.py (after writing the first letter(s) of the file, you can auto-complete the name using TAB (keep clicking if you have multiple files with the same first letters until the right file name appears))</li>
+    <li>Click enter to start the converter (if it doesn't start, see Section <a href="#TOC6_2">6.2</a>)</li>
+  </ul>
+  <h2 id="TOC3_3">3.3. Run extractor</h2>
+  <ul>
+    <li>Type in text as requested and complete input by clicking enter</li>
+    <li>Navigate within and between your inputs using the arrow keys</li>
+    <li>You can terminate the program any time by entering Ctrl + C or by closing the terminal window</li>
+  </ul>
+  <h2 id="TOC3_4">3.4. Run the automated DataExtractor and MaxPointFinder</h2>
+  <p>These two programs can be started the same way as the main program, just type in the other script name and follow the instructions.</p>
+  <h1 id="TOC4">4. Change default values</h1>
+  <h2 id="TOC4_1">4.1. Variables</h2>
+  <ul>
+    <li>First of all: make a backup copy of the original file</li>
+    <li>Open the IodineAssay_DataExtractor.py in a text editor (best is a plain editor such as Notepad)</li>
+    <li>Look for the name and line number of the variable (see Section <a href="#TOC4_2">4.2</a>-<a href="#TOC4_4">4.4</a>)
+      <ul>
+        <li>To find the line number, open file in Notepad and go to Tab View &gt; Status Bar &gt; Ln (bottom)</li>
+      </ul>
+    </li>
+    <li>Be careful when changing the variables! Mistakes will cause the program to crash
+      <ul>
+        <li>Spaces are not essential, but leave one space between the = and your input</li>
+        <li>Numbers are written as the are (e.g. SlopeCount = 8)</li>
+        <li>Lists are written as brackets with commas (e.g. TypeTimePoints = [1, 2, 3, 5, 7, 10]</li>
+        <li>Text is indicated by “ “ (can be single or double quotes but the same before and after the text, e.g. Lassay = “f”)</li>
+      </ul>
+    </li>
+    <li>Save the file (if you change the name, remember to use the new one)</li>
+  </ul>
+  <h2 id="TOC4_2">4.2. Column indices</h2>
+  <ul>
+    <li>There are two column indices required as input
+      <ul>
+        <li>Default_WavelengthColumnIndex (default = 1)
+          <ul>
+            <li>This is the number of the column containing the list of wavelengths (only for spectra)</li>
+            <li>The variable is located in line 12 of the file</li>
+          </ul>
+        </li>
+        <li>Default_FirstDataColumnIndex (default = 3)
+          <ul>
+            <li>This is the number of the first column containing the results (in case of a plate format, the column with data from well A1-H1 and for a column format (spectra) of well A1)</li>
+            <li>The variable is located in line 15 of the file</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Columns are text separated by spaces/tabs, therefore, e.g. the column index of '450' is '3' in 'test 25 450', if you are not sure, import the input file into e.g. Excel to count the columns</li>
+  </ul>
+  <h2 id="TOC4_3">4.3. Labels</h2>
+  <ul>
+    <li>There is one label before the data (only for spectra) and one after the data and one information
+      <ul>
+        <li>Default_BeforeDataText
+          <ul>
+            <li>This is the label to indicate the start of the data of a spectra for each plate</li>
+            <li>The label is located immediately above the data (no empty lines in between)</li>
+            <li>The default text is Wavelength (The “ ” indicate that this is a text)</li>
+            <li>The variable is located in line 18 of the file</li>
+          </ul>
+        </li>
+        <li>Default_AfterDataText
+          <ul>
+            <li>This is the label to indicate the end of the data input for each plate</li>
+            <li>The default text is ~End (The “ ” indicate that this is a text)</li>
+            <li>The variable is located in line 21 of the file</li>
+          </ul>
+        </li>
+        <li>Default_EmptyLinesBetweenDataAndAfterText (default = 1)
+          <ul>
+            <li>This is the number of empty lines between the last line of the data (plate format H1-H12 or last line of spectra) and the AfterDataText label</li>
+            <li>The variable is located in line 24 of the file</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>The labels are the first text before a space of the target line (line above or below the data)</li>
+    <li>Columns are text separated by spaces/tabs, therefore, e.g. the label of 'test 25 450' is 'test', if you are not sure, import the input file into e.g. Excel to check the content of the first column in the target line</li>
+  </ul>
+  <h2 id="TOC4_4">4.4. Default settings</h2>
+  <ul>
+    <li>There are several default variables such as sample number, time points and assay area to modify
+      <ul>
+        <li>NTimePoints: Number of the time points analyzed (defaults are 6, 14 and 10)</li>
+        <li>SlopeCount: All wells of one sample (wells containing assay and wash buffer and time points)</li>
+        <li>Multiplicates: Number of identical samples (e.g. duplicates = 2)</li>
+        <li>TotNSamples: Number of samples multiplied by the number of multiplicates (two samples in duplicates = 4)</li>
+        <li>TypeTimePoints: Time points in numbers at which the sample has been taken (default is in minutes but can be entered as suitable, decimals separated by dot (e.g. 4.55)</li>
+        <li>Lassay: Location of the well containing the assay (can either be f (first X), l (last X), a (absent) or e (end of first X), where X is the row or column, depending on the sample direction, the “ ” indicate that this is a text)</li>
+        <li>Lwash: Location of the well containing the wash buffer (to wash the tips) (can either be f (first X), l (last X), a (absent) or e (end of first X), where X is the row or column, depending on the sample direction, the “ ” indicate that this is a text)</li>
+        <li>AssayArea: The indices of the first and last well (forming a rectangle) as capital letter number dash capital letter number (no spaces!)</li>
+      </ul>
+    </li>
+    <li>The default settings are set into three categories, two for vertical samples (e.g. A1-H1 for short and e.g. A1-H1 and A7-H7 for long) and one for horizontal samples (e.g. A1-A12)</li>
+    <li>All default settings are located in the lines 90 to 109 of the file</li>
+  </ul>
+  <h1 id="TOC5">5. Additional information</h1>
+  <h2 id="TOC5_1">5.1. Add python to PATH in Windows</h2>
+  <ul>
+    <li>Go to Start Menu &gt; Computer &gt; Right-click &gt; Properties &gt; (Side panel) Advanced system settings &gt; ((Tab) Advanced) &gt; (Bottom) Environment Variables... &gt; (Under User variables for XXX) New...</li>
+    <li>Type in PATH next to Variable name:</li>
+    <li>Enter the absolute path (e.g. C:\Users\XXX\AppData\Local\Programs\Python\Python35\) next to Variable value: </li>
+    <li>You might have to add a path for scripts in the sub-folder of the previous as well (the variable value looks then e.g. like this: C:\Users\XXX\AppData\Local\Programs\Python\Python35\; C:\Users\XXX\AppData\Local\Programs\Python\Python35\Scripts\)</li>
+    <li>Log off and on or restart your computer to load the new variable</li>
+  </ul>
+  <h2 id="TOC5_2">5.2. Navigate in command prompt</h2>
+  <ul>
+    <li>Complete input by clicking enter</li>
+    <li>Auto-complete directory and file names by clicking TAB</li>
+    <li>Navigate between your inputs using the arrow keys</li>
+    <li>Move one directory up by typing cd.. (e.g. from C:\Users\Test\Desktop to C:\Users\Test)</li>
+    <li>Change to another directory by typing cd and the full path (e.g. cd C:\Users\Test\Desktop)</li>
+  </ul>
+  <h2 id="TOC5_3">5.3. Setup command prompt in Windows</h2>
+  <ul>
+    <li>You can find the 'Command Prompt' under under Start Menu &gt; All Programs &gt; Accessories</li>
+    <li>(Click and drag the command prompt to the desktop to create a shortcut)</li>
+    <li>Right-click on the shortcut/file and select Properties</li>
+    <li>Under Start in: select the folder containing the IodineAssay_DataExtractor.py (again, to minimize the text you have to write, if you can't, see Section <a href="#TOC5_2">5.2</a>; you can see the full path of the converter by right click &gt; Properties &gt; Location:)</li>
+  </ul>
+  <h1 id="TOC6">6. Troubleshoot</h1>
+  <h2 id="TOC6_1">6.1. Wrong data was entered</h2>
+  <ul>
+    <li>The entered data will be checked and will ask you to re-enter information if problems were detected until no more errors are found</li>
+    <li>Once the input is complete, a summary is shown and you are asked for your verification, and the questionnaire will be started again if needed</li>
+    <li>You can at any time terminate the program by entering Ctrl + C or by closing the terminal</li>
+  </ul>
+  <h2 id="TOC6_2">6.2. Error messages in the command prompt</h2>
+  <ul>
+    <li>'XXX' is not recognized as an internal or external command, operable program or batch file.
+      <ul>
+        <li>You have typed the program name wrong, it should be: python</li>
+        <li>Python is not added to PATH, see Section <a href="#TOC5_1">5.1</a>or type in full path for python (if unknown search python.exe in windows explorer, right click &gt; Properties &gt; Location:)</li>
+        <li>Python is not installed, see Section <a href="#TOC2_1">2.1</a></li>
+      </ul>
+    </li>
+    <li>python: can't open file 'XXX': [Errno 2] No such file or directory
+      <ul>
+        <li>You have typed the file name wrong, it should be: IodineAssay_DataExtractor.py</li>
+        <li>You are not in the correct folder, see Section <a href="#TOC5_2">5.2</a>and <a href="#TOC5_3">5.3</a></li>
+        <li>The file converter is not in the correct directory, copy it to the correct folder</li>
+      </ul>
+    </li>
+    <li>Other errors are most likely if you have another version of Python, has to be python 3.X (the program has been written in python 3.5)</li>
+  </ul>
+  <h2 id="TOC6_3">6.3. The program crashed</h2>
+  <ul>
+    <li>The file format is not correct, see Section <a href="#TOC6_4">6.4</a></li>
+    <li>Data is missing, see Section <a href="#TOC6_5">6.5</a></li>
+  </ul>
+  <h2 id="TOC6_4">6.4. Cannot read file format</h2>
+  <ul>
+    <li>Try exporting the data at plain text file (.txt or .csv) from the spectrophotometer</li>
+    <li>Open with a plain text program (e.g. Notepad) and save as .txt file with UTF-8 encoding</li>
+  </ul>
+  <h2 id="TOC6_5">6.5. File is not read in correctly</h2>
+  <ul>
+    <li>The input file format is based on the export format of the spectrophotometer from Molecular Devices, being
+      <ul>
+        <li>Each plate is presented separately in a table with 12 columns and 8 rows</li>
+        <li>On the left side of this table are two (mostly empty) columns</li>
+        <li>For spectra: A row starting with 'Wavelength' is immediately followed by the data table</li>
+        <li>Below this table is an (empty) row, followed by one containing '~End'</li>
+      </ul>
+    </li>
+    <li>You can modify the default input variables, see Section <a href="#TOC4">4</a></li>
+    <li>If you have another input format, contact <a href="mailto:A.L.O.Gaenssle@rug.nl">A.L.O.Gaenssle@rug.nl</a> for adaptions</li>
+  </ul>
+  <h2 id="TOC6_6">6.6. The output format is not as required</h2>
+  <p>Contact <a href="mailto:A.L.O.Gaenssle@rug.nl">A.L.O.Gaenssle@rug.nl</a> for adaptions</p>
+</div>
+</body>
+</html>
